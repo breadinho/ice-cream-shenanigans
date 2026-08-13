@@ -2,40 +2,74 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>ICE CREAM SHENANIGANS</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
-    <!-- MONEY / SCORE -->
+
+    <!-- ==================================================
+         TOP STATS
+    ================================================== -->
+
     <div id="stats">
-        <div>💰 MONEY: ₴<span id="money">0</span></div>
-        <div>🍦 SERVED: <span id="served">0</span></div>
-        <div>👊 SHENANIGANS: <span id="shenanigans">0</span></div>
+
+        <div>
+            💰 MONEY: ₴<span id="money">0</span>
+        </div>
+
+        <div>
+            🍦 SERVED: <span id="served">0</span>
+        </div>
+
+        <div>
+            👊 SHENANIGANS:
+            <span id="shenanigans">0</span>
+        </div>
+
     </div>
 
-    <!-- CUSTOMER -->
+
+    <!-- ==================================================
+         MAIN GAME
+    ================================================== -->
+
     <main>
+
 
         <section id="customerArea">
 
-            <h1>🍦 ICE CREAM SHENANIGANS</h1>
+            <h1>
+                🍦 ICE CREAM SHENANIGANS
+            </h1>
 
             <div id="customer">
                 👤
             </div>
 
+
             <div id="order">
 
-                <h2>Customer wants:</h2>
+                <h2>
+                    Customer wants:
+                </h2>
 
                 <div id="orderFlavors">
-                    <!-- JavaScript puts requested flavors here -->
                 </div>
 
             </div>
@@ -43,50 +77,142 @@
         </section>
 
 
-        <!-- ICE CREAM -->
+        <!-- ==================================================
+             ICE CREAM
+        ================================================== -->
+
         <section id="iceCreamArea">
 
-            <h2>🍨 ICE CREAM</h2>
+            <h2>
+                🍨 ICE CREAM
+            </h2>
 
             <div id="flavors">
 
-                <button class="flavor" data-flavor="blue">
+
+                <!-- STARTER FLAVORS -->
+
+                <button
+                    class="flavor"
+                    data-flavor="blue"
+                >
                     💎
                     <span>Blue Angel</span>
                 </button>
 
-                <button class="flavor" data-flavor="vanilla">
+
+                <button
+                    class="flavor"
+                    data-flavor="vanilla"
+                >
                     🍦
                     <span>Vanilla</span>
                 </button>
 
-                <button class="flavor" data-flavor="chocolate">
+
+                <button
+                    class="flavor"
+                    data-flavor="chocolate"
+                >
                     🍫
                     <span>Chocolate</span>
                 </button>
 
-                <button class="flavor" data-flavor="cherry">
+
+                <button
+                    class="flavor"
+                    data-flavor="cherry"
+                >
                     🍒
                     <span>Cherry</span>
                 </button>
+
+
+                <!-- LOCKED FLAVORS -->
+
+                <button
+                    class="flavor"
+                    data-flavor="strawberry"
+                    hidden
+                >
+                    🍓
+                    <span>Strawberry</span>
+                </button>
+
+
+                <button
+                    class="flavor"
+                    data-flavor="mint"
+                    hidden
+                >
+                    🌿
+                    <span>Mint</span>
+                </button>
+
+
+                <button
+                    class="flavor"
+                    data-flavor="banana"
+                    hidden
+                >
+                    🍌
+                    <span>Banana</span>
+                </button>
+
+
+                <button
+                    class="flavor"
+                    data-flavor="rainbow"
+                    hidden
+                >
+                    🌈
+                    <span>Rainbow</span>
+                </button>
+
+
+                <button
+                    class="flavor"
+                    data-flavor="galaxy"
+                    hidden
+                >
+                    🌌
+                    <span>Galaxy</span>
+                </button>
+
+
+                <button
+                    class="flavor"
+                    data-flavor="guarguantian"
+                    hidden
+                >
+                    🌠
+                    <span>GUARGUANTIAN</span>
+                </button>
+
 
             </div>
 
         </section>
 
 
-        <!-- CURRENT ICE CREAM -->
+        <!-- ==================================================
+             CURRENT ICE CREAM
+        ================================================== -->
+
         <section id="currentOrder">
 
-            <h2>Your ice cream:</h2>
+            <h2>
+                Your ice cream:
+            </h2>
 
             <div id="selectedFlavors">
-                <!-- Selected flavors appear here -->
             </div>
+
 
             <button id="serveButton">
                 🍦 SERVE
             </button>
+
 
             <button id="clearButton">
                 ❌ CLEAR
@@ -94,11 +220,19 @@
 
         </section>
 
-<!-- 4 FLAVOR SHENANIGANS -->
 
-        <section id="shenaniganArea" hidden>
+        <!-- ==================================================
+             SHENANIGANS
+        ================================================== -->
 
-            <h2>🚨 SHENANIGANS 🚨</h2>
+        <section
+            id="shenaniganArea"
+            hidden
+        >
+
+            <h2>
+                🚨 SHENANIGANS 🚨
+            </h2>
 
             <p>
                 THIS CUSTOMER ASKED FOR FOUR FLAVORS.
@@ -110,35 +244,154 @@
 
         </section>
 
-    </main>
 
-
-    <!-- SHOP -->
+<!-- ==================================================
+         SHOP
+    ================================================== -->
 
     <section id="shop">
 
-        <h2>🛒 SHOP</h2>
+        <h2>
+            🛒 SHOP
+        </h2>
 
         <p>
-            you... Don't get it lol
+            Buy more flavorz. Use them forever.
         </p>
+
+
+        <div id="shopFlavors">
+
+
+            <!-- STARTER FLAVORS -->
+
+            <button
+                class="shopFlavor owned"
+                data-flavor="blue"
+                data-price="0"
+            >
+                💎 Blue Angel
+                <span>FREE</span>
+            </button>
+
+
+            <button
+                class="shopFlavor owned"
+                data-flavor="vanilla"
+                data-price="0"
+            >
+                🍦 Vanilla
+                <span>FREE</span>
+            </button>
+
+
+            <button
+                class="shopFlavor owned"
+                data-flavor="chocolate"
+                data-price="0"
+            >
+                🍫 Chocolate
+                <span>FREE</span>
+            </button>
+
+
+            <button
+                class="shopFlavor owned"
+                data-flavor="cherry"
+                data-price="0"
+            >
+                🍒 Cherry
+                <span>FREE</span>
+            </button>
+
+
+            <!-- PAID FLAVORS -->
+
+            <button
+                class="shopFlavor"
+                data-flavor="strawberry"
+                data-price="100"
+            >
+                🍓 Strawberry
+                <span>₴100</span>
+            </button>
+
+
+            <button
+                class="shopFlavor"
+                data-flavor="mint"
+                data-price="250"
+            >
+                🌿 Mint
+                <span>₴250</span>
+            </button>
+
+
+            <button
+                class="shopFlavor"
+                data-flavor="banana"
+                data-price="500"
+            >
+                🍌 Banana
+                <span>₴500</span>
+            </button>
+
+
+            <button
+                class="shopFlavor"
+                data-flavor="rainbow"
+                data-price="1000"
+            >
+                🌈 Rainbow
+                <span>₴1,000</span>
+            </button>
+
+
+            <button
+                class="shopFlavor"
+                data-flavor="galaxy"
+                data-price="2500"
+            >
+                🌌 Galaxy
+                <span>₴2,500</span>
+            </button>
+
+
+            <button
+                class="shopFlavor"
+                data-flavor="guarguantian"
+                data-price="5000"
+            >
+                🌠 GUARGUANTIAN
+                <span>₴5,000</span>
+            </button>
+
+
+        </div>
 
     </section>
 
 
-    <!-- DATA -->
+    <!-- ==================================================
+         DATA
+    ================================================== -->
 
     <section id="data">
 
-        <h2>🌐 DATA</h2>
+        <h2>
+            🌐 DATA
+        </h2>
+
 
         <button id="saveButton">
             💾 SAVE
         </button>
 
+
         <button id="resetProgressButton">
             🔥 RESET PROGRESS
         </button>
+
 
         <button id="resetAllButton">
             🖲️ RESET ALL
@@ -147,12 +400,16 @@
     </section>
 
 
-    <!-- MESSAGE -->
+    <!-- ==================================================
+         MESSAGE
+    ================================================== -->
 
     <div id="message"></div>
 
 
-    <!-- JAVASCRIPT -->
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
 
     <script src="script.js"></script>
 

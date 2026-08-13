@@ -1,6 +1,6 @@
 /* ==========================================================
    ICE CREAM SHENANIGANS
-   JAVASCRIPT — PART 1
+   FRESH JAVASCRIPT — PART 1/4
 ========================================================== */
 
 
@@ -17,7 +17,19 @@ let selectedFlavors = [];
 
 
 /* ==========================================================
-   FLAVORS
+   UNLOCKED FLAVORS
+========================================================== */
+
+let unlockedFlavors = [
+    "blue",
+    "vanilla",
+    "chocolate",
+    "cherry"
+];
+
+
+/* ==========================================================
+   FLAVOR DATA
 ========================================================== */
 
 const flavors = {
@@ -40,6 +52,36 @@ const flavors = {
     cherry: {
         name: "Cherry",
         emoji: "🍒"
+    },
+
+    strawberry: {
+        name: "Strawberry",
+        emoji: "🍓"
+    },
+
+    mint: {
+        name: "Mint",
+        emoji: "🌿"
+    },
+
+    banana: {
+        name: "Banana",
+        emoji: "🍌"
+    },
+
+    rainbow: {
+        name: "Rainbow",
+        emoji: "🌈"
+    },
+
+    galaxy: {
+        name: "Galaxy",
+        emoji: "🌌"
+    },
+
+    guarguantian: {
+        name: "GUARGUANTIAN",
+        emoji: "🌠"
     }
 
 };
@@ -67,6 +109,33 @@ const selectedFlavorsDisplay =
 const message =
     document.getElementById("message");
 
+const serveButton =
+    document.getElementById("serveButton");
+
+const clearButton =
+    document.getElementById("clearButton");
+
+const shenaniganArea =
+    document.getElementById("shenaniganArea");
+
+const punchButton =
+    document.getElementById("punchButton");
+
+const saveButton =
+    document.getElementById("saveButton");
+
+const resetProgressButton =
+    document.getElementById("resetProgressButton");
+
+const resetAllButton =
+    document.getElementById("resetAllButton");
+
+const flavorButtons =
+    document.querySelectorAll(".flavor");
+
+const shopFlavorButtons =
+    document.querySelectorAll(".shopFlavor");
+
 
 /* ==========================================================
    UPDATE STATS
@@ -74,45 +143,26 @@ const message =
 
 function updateStats() {
 
-    moneyDisplay.textContent = money;
-    servedDisplay.textContent = served;
-    shenanigansDisplay.textContent = shenanigans;
+    moneyDisplay.textContent =
+        money;
+
+    servedDisplay.textContent =
+        served;
+
+    shenanigansDisplay.textContent =
+        shenanigans;
 
 }
 
 
 /* ==========================================================
-   RANDOM CUSTOMER ORDER
+   MESSAGE HELPER
 ========================================================== */
 
-function generateOrder() {
+function showMessage(text) {
 
-    currentOrder = [];
-
-    const flavorKeys =
-        Object.keys(flavors);
-
-    const amount =
-        Math.floor(Math.random() * 3) + 1;
-
-    while (currentOrder.length < amount) {
-
-        const randomFlavor =
-            flavorKeys[
-                Math.floor(
-                    Math.random() * flavorKeys.length
-                )
-            ];
-
-        if (!currentOrder.includes(randomFlavor)) {
-
-            currentOrder.push(randomFlavor);
-
-        }
-
-    }
-
-    displayOrder();
+    message.textContent =
+        text;
 
 }
 
@@ -125,181 +175,103 @@ function displayOrder() {
 
     orderFlavors.innerHTML = "";
 
-    currentOrder.forEach(function (flavor) {
+    currentOrder.forEach(
+        function (flavor) {
 
-        const item =
-            document.createElement("span");
+            const item =
+                document.createElement("span");
 
-        item.textContent =
-            flavors[flavor].emoji +
-            " " +
-            flavors[flavor].name;
+            item.textContent =
+                flavors[flavor].emoji +
+                " " +
+                flavors[flavor].name;
 
-        orderFlavors.appendChild(item);
-
-    });
-
-}
-
-
-/* ==========================================================
-   DISPLAY SELECTED ICE CREAM
-========================================================== */
-
-function displaySelectedFlavors() {
-
-    selectedFlavorsDisplay.innerHTML = "";
-
-    selectedFlavors.forEach(function (flavor) {
-
-        const item =
-            document.createElement("span");
-
-        item.textContent =
-            flavors[flavor].emoji +
-            " " +
-            flavors[flavor].name;
-
-        selectedFlavorsDisplay.appendChild(item);
-
-    });
-
-}
-
-
-/* ==========================================================
-   FLAVOR BUTTONS
-========================================================== */
-
-const flavorButtons =
-    document.querySelectorAll(".flavor");
-
-
-flavorButtons.forEach(function (button) {
-
-    button.addEventListener(
-        "click",
-        function () {
-
-            const flavor =
-                button.dataset.flavor;
-
-            selectedFlavors.push(flavor);
-
-            displaySelectedFlavors();
+            orderFlavors.appendChild(
+                item
+            );
 
         }
     );
 
-});
+}
 
 
 /* ==========================================================
-   CLEAR BUTTON
+   DISPLAY SELECTED FLAVORS
 ========================================================== */
 
-const clearButton =
-    document.getElementById("clearButton");
+function displaySelectedFlavors() {
 
+    selectedFlavorsDisplay.innerHTML =
+        "";
 
-clearButton.addEventListener(
-    "click",
-    function () {
+    selectedFlavors.forEach(
+        function (flavor) {
 
-        selectedFlavors = [];
+            const item =
+                document.createElement("span");
 
-        displaySelectedFlavors();
+            item.textContent =
+                flavors[flavor].emoji +
+                " " +
+                flavors[flavor].name;
 
-        message.textContent = "";
+            selectedFlavorsDisplay.appendChild(
+                item
+            );
 
-    }
-);
+        }
+    );
+
+}
 
 
 /* ==========================================================
-   START GAME
+   GENERATE NORMAL CUSTOMER
 ========================================================== */
 
-generateOrder();
+function generateOrder() {
 
-updateStats();
+    currentOrder = [];
 
+    const availableFlavors =
+        unlockedFlavors;
 
-/* ==========================================================
-   SERVE BUTTON
-========================================================== */
+    const amount =
+        Math.floor(
+            Math.random() * 3
+        ) + 1;
 
-const serveButton =
-    document.getElementById("serveButton");
+    while (
+        currentOrder.length <
+        amount
+    ) {
 
-
-serveButton.addEventListener(
-    "click",
-    function () {
-
-        /* Check if the selected flavors
-           match the customer's order */
+        const randomFlavor =
+            availableFlavors[
+                Math.floor(
+                    Math.random() *
+                    availableFlavors.length
+                )
+            ];
 
         if (
-            selectedFlavors.length ===
-            currentOrder.length
+            !currentOrder.includes(
+                randomFlavor
+            )
         ) {
 
-            const correct =
-                selectedFlavors.every(
-                    function (flavor) {
-
-                        return currentOrder.includes(flavor);
-
-                    }
-                );
-
-
-            if (correct) {
-
-                /* Successful order */
-
-                money += 35;
-                served++;
-
-                message.textContent =
-                    "🍦 ORDER SERVED! +₴35";
-
-                selectedFlavors = [];
-
-                displaySelectedFlavors();
-
-                updateStats();
-
-                nextCustomer();
-
-            } else {
-
-                message.textContent =
-                    "❌ WRONG FLAVORS!";
-
-            }
-
-        } else {
-
-            message.textContent =
-                "❌ THAT'S NOT THE RIGHT ORDER!";
+            currentOrder.push(
+                randomFlavor
+            );
 
         }
 
     }
-);
 
+    displayOrder();
 
-/* ==========================================================
-   SHENANIGAN AREA
-========================================================== */
-
-const shenaniganArea =
-    document.getElementById("shenaniganArea");
-
-const punchButton =
-    document.getElementById("punchButton");
+}
 
 
 /* ==========================================================
@@ -315,7 +287,8 @@ function generateShenaniganOrder() {
         "cherry"
     ];
 
-    shenaniganArea.hidden = false;
+    shenaniganArea.hidden =
+        false;
 
     displayOrder();
 
@@ -323,48 +296,22 @@ function generateShenaniganOrder() {
 
 
 /* ==========================================================
-   HIDE SHENANIGAN AREA
+   HIDE SHENANIGANS
 ========================================================== */
 
 function hideShenanigans() {
 
-    shenaniganArea.hidden = true;
+    shenaniganArea.hidden =
+        true;
 
 }
 
 
 /* ==========================================================
-   PUNCH CUSTOMER
+   START NEW CUSTOMER
 ========================================================== */
 
-punchButton.addEventListener(
-    "click",
-    function () {
-
-        shenanigans++;
-
-        message.textContent =
-            "👊 CUSTOMER GOT SHENANIGAN'D!";
-
-        selectedFlavors = [];
-
-        displaySelectedFlavors();
-
-        updateStats();
-
-        hideShenanigans();
-
-        generateOrder();
-
-    }
-);
-
-
-/* ==========================================================
-   RANDOM SHENANIGAN CHANCE
-========================================================== */
-
-function maybeGenerateShenanigan() {
+function startNewCustomer() {
 
     const chance =
         Math.random();
@@ -375,28 +322,8 @@ function maybeGenerateShenanigan() {
 
     } else {
 
-        hideShenanigans();
-
-    }
-
-}
-
-
-/* ==========================================================
-   CUSTOMER GENERATION WITH SHENANIGANS
-========================================================== */
-
-function startNewCustomer() {
-
-    const chance = Math.random();
-
-    if (chance < 0.10) {
-
-        generateShenaniganOrder();
-
-    } else {
-
         generateOrder();
+
         hideShenanigans();
 
     }
@@ -405,7 +332,7 @@ function startNewCustomer() {
 
 
 /* ==========================================================
-   UPDATE CUSTOMER AFTER SUCCESS
+   NEXT CUSTOMER
 ========================================================== */
 
 function nextCustomer() {
@@ -420,89 +347,334 @@ function nextCustomer() {
 
 
 /* ==========================================================
-   REPLACE NORMAL ORDER GENERATION
+   FLAVOR BUTTONS
 ========================================================== */
 
-startNewCustomer();
+flavorButtons.forEach(
+    function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const flavor =
+                    button.dataset.flavor;
+
+                if (
+                    !unlockedFlavors.includes(
+                        flavor
+                    )
+                ) {
+
+                    showMessage(
+                        "🔒 YOU DON'T OWN THAT FLAVOR!"
+                    );
+
+                    return;
+
+                }
+
+                selectedFlavors.push(
+                    flavor
+                );
+
+                displaySelectedFlavors();
+
+            }
+        );
+
+    }
+);
 
 
 /* ==========================================================
-   MESSAGE HELPER
+   CLEAR BUTTON
 ========================================================== */
 
-function showMessage(text) {
+clearButton.addEventListener(
+    "click",
+    function () {
 
-    message.textContent = text;
+        selectedFlavors = [];
+
+        displaySelectedFlavors();
+
+        showMessage("");
+
+    }
+);
+
+
+/* ==========================================================
+   SHENANIGAN CHECK
+========================================================== */
+
+function isShenaniganOrder() {
+
+    return (
+        currentOrder.length === 4 &&
+        currentOrder.includes("blue") &&
+        currentOrder.includes("vanilla") &&
+        currentOrder.includes("chocolate") &&
+        currentOrder.includes("cherry")
+    );
 
 }
 
 
 /* ==========================================================
-   INITIAL DISPLAY
+   SERVE BUTTON
 ========================================================== */
 
-updateStats();
-displaySelectedFlavors();
+serveButton.addEventListener(
+    "click",
+    function () {
+
+        if (
+            isShenaniganOrder()
+        ) {
+
+            showMessage(
+                "🚨 FOUR FLAVORS?! SHENANIGANS!"
+            );
+
+            shenaniganArea.hidden =
+                false;
+
+            return;
+
+        }
+
+        if (
+            selectedFlavors.length !==
+            currentOrder.length
+        ) {
+
+            showMessage(
+                "❌ WRONG AMOUNT OF FLAVORS!"
+            );
+
+            return;
+
+        }
+
+        const correct =
+            selectedFlavors.every(
+                function (flavor) {
+
+                    return currentOrder.includes(
+                        flavor
+                    );
+
+                }
+            );
+
+        if (!correct) {
+
+            showMessage(
+                "❌ WRONG FLAVOR!"
+            );
+
+            return;
+
+        }
+
+        money += 35;
+
+        served++;
+
+        showMessage(
+            "🍦 ORDER SERVED! +₴35"
+        );
+
+        selectedFlavors = [];
+
+        displaySelectedFlavors();
+
+        updateStats();
+
+        startNewCustomer();
+
+    }
+);
 
 
 /* ==========================================================
-   CUSTOMER FLOW
+   PUNCH CUSTOMER
 ========================================================== */
 
-function finishCustomer() {
+punchButton.addEventListener(
+    "click",
+    function () {
 
-    selectedFlavors = [];
+        shenanigans++;
 
-    displaySelectedFlavors();
+        showMessage(
+            "👊 CUSTOMER GOT SHENANIGAN'D!"
+        );
 
-    hideShenanigans();
+        selectedFlavors = [];
 
-    startNewCustomer();
+        displaySelectedFlavors();
+
+        updateStats();
+
+        hideShenanigans();
+
+        startNewCustomer();
+
+    }
+);
+
+
+/* ==========================================================
+   SHOP
+========================================================== */
+
+shopFlavorButtons.forEach(
+    function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const flavor =
+                    button.dataset.flavor;
+
+                const price =
+                    Number(
+                        button.dataset.price
+                    );
+
+
+                if (
+                    unlockedFlavors.includes(
+                        flavor
+                    )
+                ) {
+
+                    showMessage(
+                        "🍦 YOU ALREADY OWN THIS FLAVOR!"
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    money < price
+                ) {
+
+                    showMessage(
+                        "💰 NOT ENOUGH MONEY!"
+                    );
+
+                    return;
+
+                }
+
+
+                money -= price;
+
+                unlockedFlavors.push(
+                    flavor
+                );
+
+                button.disabled =
+                    true;
+
+                button.classList.add(
+                    "owned"
+                );
+
+                showMessage(
+                    "🛒 " +
+                    flavors[flavor].name +
+                    " UNLOCKED!"
+                );
+
+                updateStats();
+                updateFlavorButtons();
+
+            }
+        );
+
+    }
+);
+
+
+/* ==========================================================
+   UPDATE SHOP
+========================================================== */
+
+function updateShop() {
+
+    shopFlavorButtons.forEach(
+        function (button) {
+
+            const flavor =
+                button.dataset.flavor;
+
+            if (
+                unlockedFlavors.includes(
+                    flavor
+                )
+            ) {
+
+                button.disabled =
+                    true;
+
+                button.classList.add(
+                    "owned"
+                );
+
+            } else {
+
+                button.disabled =
+                    false;
+
+                button.classList.remove(
+                    "owned"
+                );
+
+            }
+
+        }
+    );
 
 }
 
-
 /* ==========================================================
-   SUCCESSFUL ORDER
+   UPDATE ICE CREAM FLAVORS
 ========================================================== */
 
-function completeOrder() {
+function updateFlavorButtons() {
 
-    money += 35;
-    served++;
+    flavorButtons.forEach(
+        function (button) {
 
-    showMessage("🍦 ORDER SERVED! +₴35");
+            const flavor =
+                button.dataset.flavor;
 
-    updateStats();
+            if (
+                unlockedFlavors.includes(
+                    flavor
+                )
+            ) {
 
-    finishCustomer();
+                button.hidden = false;
+
+            } else {
+
+                button.hidden = true;
+
+            }
+
+        }
+    );
 
 }
-
-
-/* ==========================================================
-   WRONG ORDER
-========================================================== */
-
-function failedOrder() {
-
-    showMessage("❌ WRONG ORDER!");
-
-}
-
-
-/* ==========================================================
-   DATA BUTTON REFERENCES
-========================================================== */
-
-const saveButton =
-    document.getElementById("saveButton");
-
-const resetProgressButton =
-    document.getElementById("resetProgressButton");
-
-const resetAllButton =
-    document.getElementById("resetAllButton");
 
 
 /* ==========================================================
@@ -514,47 +686,22 @@ function saveGame() {
     const saveData = {
 
         money: money,
+
         served: served,
-        shenanigans: shenanigans
+
+        shenanigans: shenanigans,
+
+        unlockedFlavors:
+            unlockedFlavors
 
     };
 
     localStorage.setItem(
         "iceCreamShenanigansSave",
-        JSON.stringify(saveData)
+        JSON.stringify(
+            saveData
+        )
     );
-
-}
-
-
-/* ==========================================================
-   LOAD GAME
-========================================================== */
-
-function loadGame() {
-
-    const savedData =
-        localStorage.getItem(
-            "iceCreamShenanigansSave"
-        );
-
-    if (!savedData) {
-        return;
-    }
-
-    const data =
-        JSON.parse(savedData);
-
-    money =
-        data.money || 0;
-
-    served =
-        data.served || 0;
-
-    shenanigans =
-        data.shenanigans || 0;
-
-    updateStats();
 
 }
 
@@ -587,10 +734,41 @@ saveButton.addEventListener(
 
 
 /* ==========================================================
-   LOAD SAVED DATA
+   LOAD GAME
 ========================================================== */
 
-loadGame();
+function loadGame() {
+
+    const savedData =
+        localStorage.getItem(
+            "iceCreamShenanigansSave"
+        );
+
+    if (!savedData) {
+        return;
+    }
+
+    const data =
+        JSON.parse(savedData);
+
+    money =
+        data.money || 0;
+
+    served =
+        data.served || 0;
+
+    shenanigans =
+        data.shenanigans || 0;
+
+    unlockedFlavors =
+        data.unlockedFlavors || [
+            "blue",
+            "vanilla",
+            "chocolate",
+            "cherry"
+        ];
+
+}
 
 
 /* ==========================================================
@@ -600,16 +778,20 @@ loadGame();
 function resetProgress() {
 
     money = 0;
+
     served = 0;
+
     shenanigans = 0;
 
     selectedFlavors = [];
 
     displaySelectedFlavors();
+
     updateStats();
 
-    message.textContent =
-        "🔥 PROGRESS RESET!";
+    showMessage(
+        "🔥 PROGRESS RESET!"
+    );
 
 }
 
@@ -625,22 +807,35 @@ function resetAll() {
     );
 
     money = 0;
+
     served = 0;
+
     shenanigans = 0;
+
+    unlockedFlavors = [
+        "blue",
+        "vanilla",
+        "chocolate",
+        "cherry"
+    ];
 
     selectedFlavors = [];
 
     displaySelectedFlavors();
+
     updateStats();
 
-    message.textContent =
-        "🖲️ ALL DATA RESET!";
+    updateShop();
+
+    showMessage(
+        "🖲️ ALL DATA RESET!"
+    );
 
 }
 
 
 /* ==========================================================
-   RESET PROGRESS BUTTON
+   RESET BUTTONS
 ========================================================== */
 
 resetProgressButton.addEventListener(
@@ -653,10 +848,6 @@ resetProgressButton.addEventListener(
 );
 
 
-/* ==========================================================
-   RESET ALL BUTTON
-========================================================== */
-
 resetAllButton.addEventListener(
     "click",
     function () {
@@ -668,96 +859,17 @@ resetAllButton.addEventListener(
 
 
 /* ==========================================================
-   4-FLAVOR CUSTOMER CHECK
+   START GAME
 ========================================================== */
 
-function isShenaniganOrder() {
+loadGame();
 
-    return (
-        currentOrder.length === 4 &&
-        currentOrder.includes("blue") &&
-        currentOrder.includes("vanilla") &&
-        currentOrder.includes("chocolate") &&
-        currentOrder.includes("cherry")
-    );
+updateStats();
 
-}
+displaySelectedFlavors();
 
+updateShop();
 
-/* ==========================================================
-   SERVE CHECK
-========================================================== */
+updateFlavorButtons();
 
-serveButton.addEventListener(
-    "click",
-    function () {
-
-        if (isShenaniganOrder()) {
-
-            showMessage(
-                "🚨 FOUR FLAVORS?! SHENANIGANS!"
-            );
-
-            shenaniganArea.hidden = false;
-
-            return;
-
-        }
-
-
-        if (
-            selectedFlavors.length !==
-            currentOrder.length
-        ) {
-
-            showMessage(
-                "❌ WRONG AMOUNT OF FLAVORS!"
-            );
-
-            return;
-
-        }
-
-
-        const correct =
-            selectedFlavors.every(
-                function (flavor) {
-
-                    return currentOrder.includes(
-                        flavor
-                    );
-
-                }
-            );
-
-
-        if (!correct) {
-
-            showMessage(
-                "❌ WRONG FLAVOR!"
-            );
-
-            return;
-
-        }
-
-
-        /* Successful normal order */
-
-        money += 35;
-        served++;
-
-        showMessage(
-            "🍦 ORDER SERVED! +₴35"
-        );
-
-        selectedFlavors = [];
-
-        displaySelectedFlavors();
-
-        updateStats();
-
-        startNewCustomer();
-
-    }
-);
+startNewCustomer();

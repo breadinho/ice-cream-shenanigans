@@ -815,3 +815,42 @@ main section:hover,
     box-shadow:
         0 10px 28px rgba(50, 30, 80, 0.14);
 }
+
+
+/* ==========================================================
+   SHOP FLAVOR BUTTONS
+========================================================== */
+
+.shopFlavor {
+    padding: 10px 14px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: white;
+
+    color: #29203d;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.10);
+
+    transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+.shopFlavor:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 7px 14px rgba(0, 0, 0, 0.14);
+}
+
+.shopFlavor:active {
+    transform: translateY(1px);
+}
