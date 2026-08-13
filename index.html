@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ICE CREAM SHENANIGANS</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- MONEY / SCORE -->
+    <div id="stats">
+        <div>💰 MONEY: ₴<span id="money">0</span></div>
+        <div>🍦 SERVED: <span id="served">0</span></div>
+        <div>👊 SHENANIGANS: <span id="shenanigans">0</span></div>
+    </div>
+
+    <!-- CUSTOMER -->
+    <main>
+
+        <section id="customerArea">
+
+            <h1>🍦 ICE CREAM SHENANIGANS</h1>
+
+            <div id="customer">
+                👤
+            </div>
+
+            <div id="order">
+
+                <h2>Customer wants:</h2>
+
+                <div id="orderFlavors">
+                    <!-- JavaScript puts requested flavors here -->
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ICE CREAM -->
+        <section id="iceCreamArea">
+
+            <h2>🍨 ICE CREAM</h2>
+
+            <div id="flavors">
+
+                <button class="flavor" data-flavor="blue">
+                    💎
+                    <span>Blue Angel</span>
+                </button>
+
+                <button class="flavor" data-flavor="vanilla">
+                    🍦
+                    <span>Vanilla</span>
+                </button>
+
+                <button class="flavor" data-flavor="chocolate">
+                    🍫
+                    <span>Chocolate</span>
+                </button>
+
+                <button class="flavor" data-flavor="cherry">
+                    🍒
+                    <span>Cherry</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- CURRENT ICE CREAM -->
+        <section id="currentOrder">
+
+            <h2>Your ice cream:</h2>
+
+            <div id="selectedFlavors">
+                <!-- Selected flavors appear here -->
+            </div>
+
+            <button id="serveButton">
+                🍦 SERVE
+            </button>
+
+            <button id="clearButton">
+                ❌ CLEAR
+            </button>
+
+        </section>
+
+<!-- 4 FLAVOR SHENANIGANS -->
+
+        <section id="shenaniganArea" hidden>
+
+            <h2>🚨 SHENANIGANS 🚨</h2>
+
+            <p>
+                THIS CUSTOMER ASKED FOR FOUR FLAVORS.
+            </p>
+
+            <button id="punchButton">
+                👊 PUNCH CUSTOMER
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- SHOP -->
+
+    <section id="shop">
+
+        <h2>🛒 SHOP</h2>
+
+        <p>
+            you... Don't get it lol
+        </p>
+
+    </section>
+
+
+    <!-- DATA -->
+
+    <section id="data">
+
+        <h2>🌐 DATA</h2>
+
+        <button id="saveButton">
+            💾 SAVE
+        </button>
+
+        <button id="resetProgressButton">
+            🔥 RESET PROGRESS
+        </button>
+
+        <button id="resetAllButton">
+            🖲️ RESET ALL
+        </button>
+
+    </section>
+
+
+    <!-- MESSAGE -->
+
+    <div id="message"></div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

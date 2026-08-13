@@ -1,0 +1,817 @@
+/* ==========================================================
+   ICE CREAM SHENANIGANS
+   CSS — PART 1
+========================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b9f3ff,
+            #f7d7ff
+        );
+
+    color: #29203d;
+
+    text-align: center;
+}
+
+
+/* ==========================================================
+   TOP STATS
+========================================================== */
+
+#stats {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 12px;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+
+    font-weight: bold;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 10;
+}
+
+#stats div {
+    padding: 7px 12px;
+
+    border-radius: 10px;
+
+    background: white;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==========================================================
+   MAIN GAME
+========================================================== */
+
+main {
+    width: min(900px, 94%);
+
+    margin: 25px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 18px;
+}
+
+
+/* ==========================================================
+   GAME SECTIONS
+========================================================== */
+
+main section,
+#shop,
+#data {
+    background: rgba(255, 255, 255, 0.82);
+
+    border: 2px solid rgba(255, 255, 255, 0.9);
+
+    border-radius: 18px;
+
+    padding: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(50, 30, 80, 0.12);
+}
+
+
+h1 {
+    grid-column: 1 / -1;
+
+    margin: 5px 0 15px;
+
+    font-size: 32px;
+
+    text-shadow:
+        2px 2px 0 white;
+}
+
+h2 {
+    margin-top: 5px;
+}
+
+
+/* ==========================================================
+   CUSTOMER
+========================================================== */
+
+#customer {
+    font-size: 70px;
+
+    margin: 10px;
+
+    user-select: none;
+}
+
+#orderFlavors,
+#selectedFlavors {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    min-height: 35px;
+}
+
+#orderFlavors span,
+#selectedFlavors span {
+    padding: 6px 9px;
+
+    background: #fff4ff;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================================
+   ICE CREAM FLAVORS
+========================================================== */
+
+#flavors {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+
+.flavor {
+    width: 110px;
+
+    min-height: 75px;
+
+    padding: 8px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: white;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.10);
+
+    cursor: pointer;
+
+    font-size: 25px;
+
+    transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+
+.flavor span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+.flavor:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 7px 14px rgba(0, 0, 0, 0.14);
+}
+
+
+.flavor:active {
+    transform: translateY(1px);
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ==========================================================
+   ACTION BUTTONS
+========================================================== */
+
+#serveButton,
+#clearButton,
+#punchButton,
+#saveButton,
+#resetProgressButton,
+#resetAllButton {
+
+    padding: 8px 13px;
+
+    margin: 5px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: white;
+
+    color: #29203d;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.10);
+
+    transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+
+#serveButton:hover,
+#clearButton:hover,
+#punchButton:hover,
+#saveButton:hover,
+#resetProgressButton:hover,
+#resetAllButton:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 11px rgba(0, 0, 0, 0.14);
+}
+
+
+#serveButton:active,
+#clearButton:active,
+#punchButton:active,
+#saveButton:active,
+#resetProgressButton:active,
+#resetAllButton:active {
+
+    transform: translateY(1px);
+
+}
+
+
+/* ==========================================================
+   MESSAGE
+========================================================== */
+
+#message {
+
+    min-height: 28px;
+
+    margin: 10px auto;
+
+    font-weight: bold;
+
+    font-size: 16px;
+}
+
+
+/* ==========================================================
+   SHENANIGANS AREA
+========================================================== */
+
+#shenaniganArea {
+    grid-column: 1 / -1;
+
+    border: 2px solid #ff9b9b;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff1f1,
+            #ffe0e0
+        );
+}
+
+#shenaniganArea h2 {
+    color: #d83232;
+}
+
+#punchButton {
+    background: #ffd1d1;
+}
+
+
+/* ==========================================================
+   SHOP
+========================================================== */
+
+#shop {
+    width: min(900px, 94%);
+
+    margin: 18px auto;
+
+    text-align: center;
+}
+
+#shop p {
+    margin: 8px 0;
+
+    font-style: italic;
+
+    opacity: 0.75;
+}
+
+
+/* ==========================================================
+   DATA
+========================================================== */
+
+#data {
+    width: min(900px, 94%);
+
+    margin: 18px auto;
+
+    text-align: center;
+}
+
+#data h2 {
+    margin-bottom: 12px;
+}
+
+
+/* ==========================================================
+   BUTTON VARIANTS
+========================================================== */
+
+#serveButton {
+    background: #d9fff0;
+}
+
+#clearButton {
+    background: #fff1d6;
+}
+
+#saveButton {
+    background: #dff1ff;
+}
+
+#resetProgressButton {
+    background: #fff0c9;
+}
+
+#resetAllButton {
+    background: #ffdede;
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 650px) {
+
+    #stats {
+        flex-wrap: wrap;
+
+        gap: 7px;
+
+        font-size: 13px;
+    }
+
+    #stats div {
+        padding: 6px 9px;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+
+        width: 94%;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    #customer {
+        font-size: 58px;
+    }
+
+    .flavor {
+        width: 100px;
+
+        min-height: 70px;
+    }
+
+}
+
+
+/* ==========================================================
+   EXTRA POLISH
+========================================================== */
+
+button {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+button:focus-visible {
+    outline: 3px solid #8c7cff;
+    outline-offset: 2px;
+}
+
+
+/* ==========================================================
+   SELECTED ICE CREAM
+========================================================== */
+
+#selectedFlavors span {
+    background: #e9ddff;
+
+    border: 1px solid #c8b4ff;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.07);
+}
+
+
+/* ==========================================================
+   CUSTOMER ORDER
+========================================================== */
+
+#orderFlavors span {
+    background: #e0f8ff;
+
+    border: 1px solid #b7e8f5;
+}
+
+
+/* ==========================================================
+   FLAVOR BUTTON COLORS
+========================================================== */
+
+.flavor[data-flavor="blue"] {
+    background: #e5f8ff;
+}
+
+.flavor[data-flavor="vanilla"] {
+    background: #fff9df;
+}
+
+.flavor[data-flavor="chocolate"] {
+    background: #f3e2d5;
+}
+
+.flavor[data-flavor="cherry"] {
+    background: #ffe1e8;
+}
+
+
+/* ==========================================================
+   SHENANIGANS HOVER
+========================================================== */
+
+#punchButton:hover {
+    background: #ffc0c0;
+
+    transform:
+        translateY(-2px)
+        rotate(-1deg);
+}
+
+
+/* ==========================================================
+   DISABLED BUTTONS
+========================================================== */
+
+button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none !important;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ==========================================================
+   SMOOTH APPEARANCE
+========================================================== */
+
+main section,
+#shop,
+#data {
+    transition:
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+main section:hover,
+#shop:hover,
+#data:hover {
+    box-shadow:
+        0 10px 28px rgba(50, 30, 80, 0.14);
+}
+
+
+/* ==========================================================
+   CSS PART 5 — EXTRA ICE CREAM VIBES
+========================================================== */
+
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+h1 {
+    letter-spacing: 1px;
+
+    animation:
+        titleFloat 3s ease-in-out infinite;
+}
+
+@keyframes titleFloat {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ==========================================================
+   CUSTOMER AREA
+========================================================== */
+
+#customerArea {
+    position: relative;
+    overflow: hidden;
+}
+
+#customerArea::before {
+    content: "🍦";
+
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    font-size: 28px;
+
+    opacity: 0.25;
+
+    transform: rotate(15deg);
+}
+
+
+/* ==========================================================
+   FLAVOR BUTTON HOVER
+========================================================== */
+
+.flavor:hover {
+    transform:
+        translateY(-4px)
+        rotate(-1deg);
+}
+
+
+/* ==========================================================
+   ORDER ANIMATION
+========================================================== */
+
+#orderFlavors span {
+    animation:
+        flavorAppear 0.2s ease-out;
+}
+
+#selectedFlavors span {
+    animation:
+        flavorAppear 0.2s ease-out;
+}
+
+@keyframes flavorAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* ==========================================================
+   MESSAGE
+========================================================== */
+
+#message {
+    padding: 6px 12px;
+
+    border-radius: 10px;
+
+    width: fit-content;
+
+    max-width: 90%;
+
+    background: rgba(255, 255, 255, 0.7);
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ==========================================================
+   SHOP "YOU DON'T GET IT LOL"
+========================================================== */
+
+#shop p {
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+#shop:hover p {
+    opacity: 1;
+
+    transform: rotate(-1deg);
+}
+
+
+/* ==========================================================
+   DATA BUTTON SPACING
+========================================================== */
+
+#data button {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+
+/* ==========================================================
+   SMALL SCREEN TOUCH IMPROVEMENT
+========================================================== */
+
+@media (max-width: 650px) {
+
+    .flavor:hover {
+        transform: translateY(-2px);
+    }
+
+    .flavor:active {
+        transform: scale(0.97);
+    }
+
+}
+
+
+/* ==========================================================
+   EXTRA POLISH
+========================================================== */
+
+button {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+button:focus-visible {
+    outline: 3px solid #8c7cff;
+    outline-offset: 2px;
+}
+
+
+/* ==========================================================
+   SELECTED ICE CREAM
+========================================================== */
+
+#selectedFlavors span {
+    background: #e9ddff;
+
+    border: 1px solid #c8b4ff;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.07);
+}
+
+
+/* ==========================================================
+   CUSTOMER ORDER
+========================================================== */
+
+#orderFlavors span {
+    background: #e0f8ff;
+
+    border: 1px solid #b7e8f5;
+}
+
+
+/* ==========================================================
+   FLAVOR BUTTON COLORS
+========================================================== */
+
+.flavor[data-flavor="blue"] {
+    background: #e5f8ff;
+}
+
+.flavor[data-flavor="vanilla"] {
+    background: #fff9df;
+}
+
+.flavor[data-flavor="chocolate"] {
+    background: #f3e2d5;
+}
+
+.flavor[data-flavor="cherry"] {
+    background: #ffe1e8;
+}
+
+
+/* ==========================================================
+   SHENANIGANS HOVER
+========================================================== */
+
+#punchButton:hover {
+    background: #ffc0c0;
+
+    transform:
+        translateY(-2px)
+        rotate(-1deg);
+}
+
+
+/* ==========================================================
+   DISABLED BUTTONS
+========================================================== */
+
+button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none !important;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ==========================================================
+   SMOOTH APPEARANCE
+========================================================== */
+
+main section,
+#shop,
+#data {
+    transition:
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+main section:hover,
+#shop:hover,
+#data:hover {
+    box-shadow:
+        0 10px 28px rgba(50, 30, 80, 0.14);
+}
