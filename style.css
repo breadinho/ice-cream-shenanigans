@@ -854,3 +854,28 @@ main section:hover,
 .shopFlavor:active {
     transform: translateY(1px);
 }
+
+
+.flavor[data-flavor="strawberry"] {
+    background: #ffd6df;
+}
+
+.flavor[data-flavor="mint"] {
+    background: #d8f7e4;
+}
+
+.flavor[data-flavor="banana"] {
+    background: #fff1b8;
+}
+
+.flavor[data-flavor="rainbow"] {
+    background: #eadcff;
+}
+
+.flavor[data-flavor="galaxy"] {
+    background: #dcdcff;
+}
+
+.flavor[data-flavor="guarguantian"] {
+    background: #ffd9b8;
+}
